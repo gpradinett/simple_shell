@@ -4,6 +4,13 @@
 #include <string.h>
 #include "shell.h"
 
+/*
+ * _getline: The first function prints the prompt string.
+ * print_prompt1(): reads the next line of input
+ *
+ *
+ */
+
 int main(int argc, char **argv)
 {
     char *cmd;
@@ -19,13 +26,14 @@ int main(int argc, char **argv)
         {
             exit(EXIT_SUCCESS);
         }
-
+	/*If the command is empty, we skip this input and continue with the loop*/
         if(cmd[0] == '\0' || strcmp(cmd, "\n") == 0)
         {
             free(cmd);
             continue;
         }
-
+	/*If the command is exit, we exit the shell, Otherwise, we echo back the command,
+	free the memory we used to store the command, and continue with the loop*/
         if(strcmp(cmd, "exit\n") == 0)
         {
             free(cmd);
