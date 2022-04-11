@@ -7,10 +7,11 @@
 #include "parser.h"
 #include "executor.h"
 
-/*
- * _getline: The first function prints the prompt string.
- * print_prompt1(): reads the next line of input
- *
+/**
+ * main - Read Eval Print Loopi,Here the shell runs in a loop
+ * @argc: prints the prompt string
+ * @argv: reads the next line of input
+ * Return: the int converted from the string
  */
 
 int main(int argc, char **argv)
