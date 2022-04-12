@@ -53,7 +53,7 @@ char **sherlock(char *str, const char *delim);
 void free_d_ptr(char **ptr);
 int count_delim(char *str, const char *delim);
 void set_word(char *str, char **words, unsigned int word,
-	      unsigned int mark, unsigned int i);
+unsigned int mark, unsigned int i);
 int (*runcommand(char **commands, char *buffer))(char **, char *);
 char *_getenv(const char *name);
 char *get_file_path(char *filename);
