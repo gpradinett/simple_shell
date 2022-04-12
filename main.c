@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  *sigintHandler - makes it so shell does not end on ^C
  *@sig_num: signal reference
@@ -12,7 +11,6 @@ void sigintHandler(int sig_num)
 	signal(SIGINT, sigintHandler);
 	write(1, "\n$ ", 3);
 }
-
 /**
  *runexe - runs an executable file
  *@commands: an array of arguments
