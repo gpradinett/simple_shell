@@ -37,22 +37,22 @@ This repository contains the files for Holberton's **simple_shell**. It can be c
 - write (man 2 write)
 
 ### GCC command to compile:
-`
+```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
-`
+```
 
 This wil compile all the '.c' files and change the output's name to 'hsh'.
 
 ### Template to test output:
-=============
+
 $ ./hsh
 
 ($)
 
-hsh main.c shell.c
+hsh main.c shell.h
 
 $ exit
-$
+
 
 
 After you clone this repository and compile the program with the command above, you will generate a file called **hsh** that can be executed by entering  ```./hsh``` in your shell.
