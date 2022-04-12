@@ -1,0 +1,74 @@
+.TH man 1 "09 April 2022" "0.1" "simple_shell man page"
+
+.SH NAME
+.B simple_shell
+- Simple shell made in C to interact with a linux operating system.
+
+.SH SYNOPSIS
+./hsh [options] [file]
+
+.SH DESCRIPTION
+Shell is a program that takes commands from the standard input(keyboard) and gives them to the operating system to execute. This is a small version of the shell.
+
+.SH INVOCATION
+Start by compiling all the .c files using this command:
+
+.in +2n
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+.in
+
+.B Example interactive mode:
+.in +2n
+
+\fB'./hsh'\fR
+.in +2n
+
+.B Example non interactive  mode:
+.in
+
+\fBecho "/bin/ls" | ./hsh\fR
+.in
+
+.SH Return Value
+
+Always 0 for success, other number means failure.
+
+
+.SH EXAMPLES
+.in +2n
+
+simple_shell$ ./hsh
+.br
+cisfun$
+.br
+cisfun$ ls
+.br
+AUTHORS  README.md  getenv.c  builtin1.c  man_1_simple_shell
+pathfinding.c  shell.h  sherlock.c  string.h  main.c
+.br
+cisfun$ exit
+.br
+simple_shell%
+.in
+
+
+
+.in +2n
+
+
+simple_shell$ echo "bin/ls" | ./hsh
+.br
+AUTHORS  README.md  getenv.c  builtin1.c  man_1_simple_shell
+pathfinding.c  shell.h  sherlock.c  string.h  main.c
+.br
+simple_shell$
+.in
+
+.SH SEE ALSO
+access(2), chdir(2), execve(2), _exit(2), exit(3), fflush(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
+
+
+.SH AUTHOR
+Piero Ramirez <estibensmax2022@gmail.com>
+.br
+Fernando Gonzales <gpradinett@gmail.com>
