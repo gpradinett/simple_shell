@@ -1,7 +1,4 @@
 #include "shell.h"
-
-
-
 /**
  * get_file_path - get directory from PATH if it contains a file
  * @filename: filename to check for full path
