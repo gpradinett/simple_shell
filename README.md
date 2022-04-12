@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://cdn-website.partechpartners.com/media/images/Holberton_School_Logo.original.png">
+</p>
+
 # simple_shell project repository
 
 This repository contains the files for Holberton's **simple_shell**. It can be compiled using GCC and will execute a simple shell that can be used for some basic tasks and programs most commonly found in the /bin/ folder.
@@ -65,5 +69,5 @@ Where you will get a prompt in the shape of a dollar sign so you can start typin
 
 ### Contact Info:
 
-Git: [Fernando Gonzales](https://github.com/gpradinett).
-Git: [Piero Ramirez] (https://github.com/Piero2023).
+*Git: [Fernando Gonzales](https://github.com/gpradinett).
+*Git: [Piero Ramirez] (https://github.com/Piero2023).
