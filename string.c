@@ -1,102 +1,119 @@
 #include "shell.h"
-/**
- * _strcmpdir - compares strings to find dir.
- *
- * @s1: string.
- * @s2: string.
- *
- * Return: if match and any other number if otherwise.
- **/
-int _strcmpdir(char *s1, char *s2)
-{
-	int i = 0;
 
-	for (; (*s2 != '\0' && *s1 != '\0') && *s1 == *s2; s1++)
-	{
-		if (i == 3)
-			break;
-		i++;
-		s2++;
-	}
-
-	return (*s1 - *s2);
-}
 /**
- * charput - writes the character like putchar
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ *_strcmp - compares two strings
+ *@s1: first string
+ *@s2: second string
+ *Return: the first difference of strings
  */
-int charput(char c)
-{
-	return (write(1, &c, 1));
-}
 
-/**
- * place - similar to puts in C
- * @str: a pointer the integer we want to set to 402
- *
- * Return: int
- */
-void place(char *str)
-{
-	while (*str != '\0')
-	{
-		charput(*str);
-		str++;
-	}
-}
-
-/**
- * _strlen - Len string.
- * @str: My string.
- * Return: Length.
- */
-int _strlen(char *str)
+int _strcmp(char *s1, char *s2)
 {
 	int i;
 
-	for (i = 0; str[i] != '\0'; i++)
-		;
-
-	return (i);
+	for (i = 0; s1[i] != '\0' || s2[i] != '\0'; i++)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+	}
+	return (0);
 }
 
 /**
- * str_concat - concatane strings.
- * @s1: string.
- * @s2: second string.
- * Return: strings.
+ * *dircat - Concatenates dir + / + file and retuns a pointer to its location
+ * in memory.
+ * @dir: directory that contains file
+ * @file: name of file
+ * Return: pointer to new string on sucess, NULL on fail.
  */
-char *str_concat(char *s1, char *s2)
+
+char *dircat(char *dir, char *file)
 {
-	char *a;
-	int lens1, lens2, j, i, e;
+	size_t i, j;
+	char *temp;
 
-	if (s1 == NULL)
-		s1 = "";
+	temp = malloc(sizeof(char) * (_strlen(dir) + _strlen(file) + 2));
+	if (temp == NULL)
+		return (NULL);
+	for (i = 0; dir[i] != '\0'; i++)
+	{
+		temp[i] = dir[i];
+	}
+	temp[i] = '/';
+	i++;
+	for (j = 0; file[j] != '\0'; j++)
+	{
+		temp[i + j] = file[j];
+	}
+	temp[i + j] = '\0';
+	return (temp);
+}
 
-	if (s2 == NULL)
-		s2 = "";
+/**
+ * _strlen - retuns the length of a string without the null char
+ * @str: string
+ * Return: length of string
+ */
 
-	lens1 = _strlen(s1);
+size_t _strlen(char *str)
+{
+	size_t i = 0;
 
-	lens2 = _strlen(s2);
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
+}
 
-	a = malloc(((lens1) + (lens2) + 1) * sizeof(char));
 
-	if (a == NULL)
+/**
+ *_atoi - converts string to int
+ *@str: string being converted
+ *Return: -1 if illegal number, else the converted int
+ */
+
+int _atoi(char *str)
+{
+	int i, n = 0;
+
+	if (str == NULL)
+		return (-1);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (-1);
+		n = (n * 10) + (str[i] - '0');
+	}
+	return (n);
+}
+
+
+/**
+ *_itoa - converts int to string
+ *@stri: a string
+ *@i: int being converted
+ *Return: a string
+ */
+
+char *_itoa(char *stri, int i)
+{
+	int j, n;
+
+	n = i;
+	for (j = 1; (n / 10) != 0; j++)
+		n = n / 10;
+
+	stri = malloc(sizeof(char) * (j + 1));
+	if (stri == NULL)
 		return (NULL);
 
-	for (j = 0; j < lens1; j++)
+	stri[j] = '\0';
+	j--;
+	for (; j >= 0; j--)
 	{
-		a[j] = s1[j];
+		stri[j] = (i % 10) + '0';
+		i = i / 10;
 	}
-
-	for (i = lens1, e = 0; e <= lens2; i++, e++)
-	{
-		a[i] = s2[e];
-	}
-	return (a);
+	return (stri);
 }
