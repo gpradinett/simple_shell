@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * sherlock - Seperates input into seprate words using a
  * delmiter and removes \n
