@@ -1,25 +1,47 @@
-#include <stdlib.h>
-#include <errno.h>
-#include <string.h>
 #include "shell.h"
 
-/*
- * print_prompt1: The first function prints the first prompt string.
- * print_prompt2: The second function prints the second prompt string,
+/**
+ * prompt - call prompt from another function (prompt)
  *
- */
-
-
-/*The first function prints the first prompt string, 
-which you usually see when the shell is waiting for you to enter a command*/
-void print_prompt1(void)
+ **/
+void prompt(void)
 {
-    fprintf(stderr, "#cisfun$ ");
-}
+	for (;;)
+	{
+		char *text = NULL, **environ;
+		pid_t child_pid;
+		int status, lenbuf;
+		size_t bufsize = 0;
 
-/*The second function prints the second prompt string,
-which is printed by the shell when you enter a multi-line command*/
-void print_prompt2(void)
-{
-    fprintf(stderr, "> ");
-}
+		place("$ ");
+		lenbuf = getline(&text, &bufsize, stdin);
+		if (lenbuf == -1)
+			exit(98);
+		if (compareExit(text, "exit") == 0)
+			exit(0);
+		if (compareEnv(text, "env") == 0)
+		{
+			while (*environ != NULL)
+			{
+				if (!(_strcmpdir(*environ, "USER")) ||
+						!(_strcmpdir(*environ, "LANGUAGE")) ||
+						!(_strcmpdir(*environ, "SESSION")) ||
+						!(_strcmpdir(*environ, "COMPIZ_CONFIG_PROFILE")) ||
+						!(_strcmpdir(*environ, "SHLV")) ||
+						!(_strcmpdir(*environ, "HOME")) ||
+						!(_strcmpdir(*environ, "C_IS")) ||
+						!(_strcmpdir(*environ, "DESKTOP_SESSION")) ||
+						!(_strcmpdir(*environ, "LOGNAME")) ||
+						!(_strcmpdir(*environ, "TERM")) ||
+						!(_strcmpdir(*environ, "PATH")))
+				{
+					place(*environ), place("\n"); }
+				environ++; }}
+		child_pid = fork();
+		if (child_pid < 0)
+			perror("Error");
+		if (child_pid == 0)
+			identify_string(text);
+		else
+			wait(&status);
+	}}
