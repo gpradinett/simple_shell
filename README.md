@@ -69,5 +69,5 @@ Where you will get a prompt in the shape of a dollar sign so you can start typin
 
 ### Contact Info:
 
-*Git: [Fernando Gonzales](https://github.com/gpradinett).
-*Git: [Piero Ramirez] (https://github.com/Piero2023).
+Git: [Fernando Gonzales](https://github.com/gpradinett).  
+Git: [Piero Ramirez] (https://github.com/Piero2023).  
